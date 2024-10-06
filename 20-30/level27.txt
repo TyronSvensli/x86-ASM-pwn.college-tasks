@@ -1,0 +1,20 @@
+In a previous level you computed the average of 4 integer quad words, which
+was a fixed amount of things to compute, but how do you work with sizes you get when
+the program is running?
+
+In most programming languages a structure exists called the
+for-loop, which allows you to do a set of instructions for a bounded amount of times.
+The bounded amount can be either known before or during the programs run, during meaning
+the value is given to you dynamically.
+
+As an example, a for-loop can be used to compute the sum of the numbers 1 to n:
+  sum = 0
+  i = 1
+  while i <= n:
+    sum += i
+    i += 1
+
+Please compute the average of n consecutive quad words, where:
+  rdi = memory address of the 1st quad word
+  rsi = n (amount to loop for)
+  rax = average computed

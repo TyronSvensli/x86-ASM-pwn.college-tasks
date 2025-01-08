@@ -1,9 +1,17 @@
 .intel_syntax noprefix
 
+xor rax, rax
 cmp rdi, 0
-jne non_zero_checker
+je done
+
+cmp byte ptr[rdi], 0
+je done
 
 non_zero_checker:
-  add rax, 1
-  cmp qword ptr [rdi + rax], 0 #unless i multiply RAX with something higher than 1 it crashes without saying any errors, I'm pretty sure this is the right solution, but because it's broken or something idk how to get this one solved.
+  inc rax
+  cmp byte ptr[rdi + rax], 0
   jne non_zero_checker
+  jmp done
+
+done:
+  nop
